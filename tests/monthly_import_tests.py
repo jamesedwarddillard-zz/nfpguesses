@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from bls_reader.bls_report_classes import *
+from bls_report_classes import *
 
 class TestReportReader(unittest.TestCase):
 	""" Test the reading of the BLS monthly Employment Situation Report """
