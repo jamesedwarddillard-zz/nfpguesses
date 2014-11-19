@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from bls_report_classes import *
+from nfpguesses.bls_reader import bls_report_classes
 
 class TestReportReader(unittest.TestCase):
 	""" Test the reading of the BLS monthly Employment Situation Report """
