@@ -1,7 +1,11 @@
 import unittest
 import os
+import sys
 
-from nfpguesses.bls_reader import bls_report_classes
+sys.path.append(os.path.abspath('../bls_reader'))
+
+from bls_report_classes import *
+
 
 class TestReportReader(unittest.TestCase):
 	""" Test the reading of the BLS monthly Employment Situation Report """
