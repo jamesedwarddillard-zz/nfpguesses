@@ -16,12 +16,12 @@ def nfp_month_finder(nfp_table, report):
 
 	nfp_table.header = nfp_table.thead.tr.find_all('th') #Turns the table header into a list of lists
 
-	report.current.month = nfp_table.header[4].contents[0]
-	report.current.year = nfp_table.header[4].contents[2]
-	report.first_revision.month = nfp_table.header[3].contents[0]
-	report.first_revision.year = nfp_table.header[3].contents[2]
-	report.second_revision.month = nfp_table.header[2].contents[0]
-	report.second_revision.year = nfp_table.header[2].contents[0]
+	report.current.month = str(nfp_table.header[4].contents[0])
+	report.current.year = str(nfp_table.header[4].contents[2])
+	report.first_revision.month = str(nfp_table.header[3].contents[0])
+	report.first_revision.year = str(nfp_table.header[3].contents[2])
+	report.second_revision.month = str(nfp_table.header[2].contents[0])
+	report.second_revision.year = str(nfp_table.header[2].contents[2])
 
 	return report
 
@@ -29,7 +29,7 @@ def nfp_jobs_finder(nfp_table, report):
 	jobs_list = [] #blank list to hold jobs values that come out
 	nfp_jobs_subtable = nfp_table.tr[2].find_all('td')
 	for td in nfp_jobs_subtable:
-		jobs_list.append(td.span.string)
+		jobs_list.append(int(td.span.string))
 	report.current.jobs = jobs_list[1]
 	report.first_revision.jobs = jobs_list[2]
 	report.second_revision.jobs = jobs_list[3]
@@ -41,17 +41,15 @@ def bls_report_reader(html_file):
 	""" function that reads the html version of the BLS Employment Situation
 	report, identifies the key data and returns a job report data class 
 	"""
-
 	#create JobsData objects
 	current = JobsData()
 	first_revision = JobsData()
 	second_revision = JobsData()
-
 	#create a Report object
 	report = Report(current, first_revision, second_revision)
-
 
 	report_soup = BeautifulSoup(html_file)
 	nfp_table = nfp_table_finder(report_soup)
 	report = nfp_month_finder(nfp_table, report)
-	report = nfp_jobs_finder(report)
+	report = nfp_jobs_finder(nfp_table, report)
+	return report
