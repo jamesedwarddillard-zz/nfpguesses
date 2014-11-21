@@ -27,7 +27,7 @@ def nfp_month_finder(nfp_table, report):
 
 def nfp_jobs_finder(nfp_table, report):
 	jobs_list = [] #blank list to hold jobs values that come out
-	nfp_jobs_subtable = nfp_table.tr[2].find_all('td')
+	nfp_jobs_subtable = nfp_table.find_all('tr')[2].find_all('td')
 	for td in nfp_jobs_subtable:
 		jobs_list.append(int(td.span.string))
 	report.current.jobs = jobs_list[1]
