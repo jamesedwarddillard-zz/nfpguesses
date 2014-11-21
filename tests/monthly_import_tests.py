@@ -23,7 +23,7 @@ class TestReportReader(unittest.TestCase):
 	def testReportReading(self):
 
 		#importing a past report for a test
-		sept_2014_html = open('09052014.html')
+		sept_2014_html = open('past_reports/09052014.html')
 	
 		sept_2014_report = bls_report_reader(sept_2014_html)
 
