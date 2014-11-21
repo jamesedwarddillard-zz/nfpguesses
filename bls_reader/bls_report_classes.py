@@ -5,7 +5,6 @@ class JobsData(object):
 		self.month = None #the month the data refers to (e.g., number of jobs created in June)
 		self.year = None
 		self.jobs = None #number of jobs created or lost in a given month in thousands
-		self.preliminary = True #is this month going to be revised in later months - default is True
 
 
 class Report(object):
