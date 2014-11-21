@@ -30,9 +30,9 @@ def nfp_jobs_finder(nfp_table, report):
 	nfp_jobs_subtable = nfp_table.find_all('tr')[2].find_all('td')
 	for td in nfp_jobs_subtable:
 		jobs_list.append(int(td.span.string))
-	report.current.jobs = jobs_list[1]
+	report.current.jobs = jobs_list[3]
 	report.first_revision.jobs = jobs_list[2]
-	report.second_revision.jobs = jobs_list[3]
+	report.second_revision.jobs = jobs_list[1]
 
 	return report
 
